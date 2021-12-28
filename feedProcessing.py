@@ -8,23 +8,19 @@ from CommonUtlity import extractZipFile, untarGZfile,readJsonFile,getS3UrlsFromJ
 from recordCount import feedRunner
 from WatchDog import *
 
-# Process -PART1 [Current code handles from point number 4 to 10]
 
-# 4.Read the control File Contents and get the values. [What if the control file doesnt have the values inside it ??]
-# 5.Compare the contolFile contents(FileName and Size) with the Source File(FileName and Size) [What if the FileName/FileSize doesnt matches??]
-# 6.Unzip the source Files.
-# 7.Traverse throught the source files, if the sub source file are zip then need to extract that.
-# 8.From the above tranversed path, find the metadatafile and its contents(filename : recordcount)
-# 9.Form the aove traversed path , find the other file other than metadatafile and read its contents(recordCount)
-# 10.Compare the above metadata record  and nonmentadatafile record counts [what need to do if the record count doesnt matching??].
-		
 if __name__ == '__main__':
 	try:
-		# Read settings from configuration file.
-		configurationFilePath = r"C:\Users\kamalsai\Desktop\GB2PR_Project\configs.ini"
+		#Setting the path as the currnet exection direcotry.
+		ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+		#Setting the path  for target location for notification message files [NotificationMessagesFromS3/{CurrentTimStamp}].
+		configurationFilePathBasePath = os.path.join(ROOT_DIR,"configs.ini")
+
+
 		logger.info("Initializing Read configurations ...")
 		config = configparser.ConfigParser()
-		config.read(configurationFilePath)
+		config.read(configurationFilePathBasePath)
+		
 		#Validating all the configs
 		logger.info ("Valiation Check for configurations ==> [ONGOING]") 
 		#Collecting Monitoring Configs to search for MessagE Notification Files on interval basis.
@@ -44,8 +40,7 @@ if __name__ == '__main__':
 		controllerId = config.get('DataSet_ID','Controller_ID')
 		logger.info ("Valiation Check for configurations ==> [SUCCESS]") 
 
-		#Setting the path as the currnet exection direcotry.
-		ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 		current_year_month_day = datetime.today().strftime('%Y-%m-%d')
 
 		#Setting the path  for target location for notification message files [NotificationMessagesFromS3/{CurrentTimStamp}].
