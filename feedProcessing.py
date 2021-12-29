@@ -113,7 +113,7 @@ if __name__ == '__main__':
 						returnCode, cmdData = executeCmd(cmdToGetS3FileCopyToLocal)
 						if returnCode ==0:
 							#Using the downloaded message.json fetching the s3 url. 
-							tempMessageData = readJsonFile(os.path.join(targetFielPath)
+							tempMessageData = readJsonFile(os.path.join(targetFielPath))
 							s3Url = getS3UrlsFromJsonData(tempMessageData)
 							if  s3Url is not None:
 								logger.info("Checking URLS ==> {0} :: URLS_FOUND".format(notificationMessageS3FileName))
@@ -125,7 +125,7 @@ if __name__ == '__main__':
 							#logging the error message
 							logger.error("File {0} Failed to  Download/Copy to Local :: {1}\nReason :: {2}".format(notificationMessageS3FileName, targetFielPath, cmdData))
 
-				Once all the s3URLs are fetched then download the controller files and source files to local.
+				#Once all the s3URLs are fetched then download the controller files and source files to local.
 				if failedUrlsDataSetCount == 0:
 					failedDownloadedCount = 0 
 					#Downloading/Copying the source, controller files from s3
