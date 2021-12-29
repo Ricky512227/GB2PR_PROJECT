@@ -1,7 +1,7 @@
 from logMonitor import logger
 import glob,os,sys
 
-#Open the control file and get its contents
+#Open the control file and get its contents based on seprator
 def readTheFileBasedonSeperator(tempFileName):
 	try:
 		logger.info("RECEIVED Controller File Name :: {0}".format(tempFileName))
