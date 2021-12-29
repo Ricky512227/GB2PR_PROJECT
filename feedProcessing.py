@@ -147,14 +147,14 @@ if __name__ == '__main__':
 				
 				#Once all the files are downloaded then send those file to File Validations
 				if failedDownloadedCount == 0:
-					controlFilePath = glob.glob(os.path.join(downloadedControlFileBasePathWithCurrentDate,"*.txt"))
+					controlFilePath = glob.glob(os.path.join(downloadedControlFileBasePathWithCurrentDate,"BKI*.txt"))
 					controlFilePath = controlFilePath[0]
 					logger.info("controlFilePath :: {0}".format(controlFilePath))
 					#Open the control file and read the contents.
 					with open(controlFilePath , 'r') as file: 
 						data = file.read()
 						controlFileData =  (filter(None, data.split('\n')))
-						control_file_Dict =  (convertControlDataToControlFileMap(controlFileData))
+						control_file_Dict =  convertControlDataToControlFileMap(controlFileData)
 						if len(control_file_Dict) != 0:
 							logger.info('Control File Content Collected  :: {0}'.format(control_file_Dict))
 							#Collect the downloaded ZIP file Names[Source(ASMT/DEED)]
@@ -168,24 +168,24 @@ if __name__ == '__main__':
 								#Compare the controlfile contents(filename and filesize) withe the source filename and filesize
 								for controlFileName, controlFileSize in control_file_Dict.items():
 									reason, absPathofSourceFile =  compareSourceandControlFile(controlFileName,controlFileSize,SourcefileDict)
-									logger.info('Received vaidation reason for controlFileName :: {0} {1}'.format(controlFileName, reason))
+									logger.info('Received Byte_Validation reason for controlFileName :: {0} {1}'.format(controlFileName, reason))
 									if reason ==  "FileSizeMatches":
-										logger.info("Checking  - ControlFileData [FileName-Size] [{0} - {1}] ==> BOTH_FILEZSIZES_ARE_MATCHING with  SourceFile [FileName-Size] [{0} - {1}] ] ".format(controlFileName, controlFileSize, controlFileName, controlFileSize))
+										logger.info("CHECKING  - ControlFileData [FileName-Size] [{0} - {1}] ==> BOTH_FILEZSIZES_ARE_MATCHING with  SourceFile [FileName-Size] [{0} - {1}] ] ".format(controlFileName, controlFileSize, controlFileName, controlFileSize))
 										#STORE ALL the files Names :: Which was passed during the file size Validations, the collected file will send to be extract and get the record Count
 										ByteValidationPassedFiles.append(absPathofSourceFile)
 									
 									elif reason ==  "FileSizeNotMatches":
-										logger.info("Checking  - ControlFileData [FileName-Size] [{0} - {1}] ==> BOTH_FILEZSIZES_ARE_NOT_MATCHING  with  SourceFile [FileName-Size] [{2} - {3}] ]".format(controlFileName, controlFileSize, controlFileName, SourcefileDict[controlFileName]))
+										logger.info("CHECKING  - ControlFileData [FileName-Size] [{0} - {1}] ==> BOTH_FILEZSIZES_ARE_NOT_MATCHING  with  SourceFile [FileName-Size] [{2} - {3}] ]".format(controlFileName, controlFileSize, controlFileName, SourcefileDict[controlFileName]))
 
 									elif reason ==  "FileNotAvailable":
-										logger.info("Checking  - ControlFileData [FileName-Size] [{0} - {1}] ==> FILE_NOT_AVAILABLE in Downloaded Path :: {2} ".format(controlFileName, controlFileSize,downloadedSourceFilesBasePathWithCurrentDate))
+										logger.info("CHECKING  - ControlFileData [FileName-Size] [{0} - {1}] ==> FILE_NOT_AVAILABLE in Downloaded Path :: {2} ".format(controlFileName, controlFileSize,downloadedSourceFilesBasePathWithCurrentDate))
 							
 								if len(ByteValidationPassedFiles) >0:
 									logger.info("s3- Valid ZipFiles :: {0}".format(ByteValidationPassedFiles))
 									for eachS3Zipfile in ByteValidationPassedFiles:
 										extractedFileList=  extractZipFile(eachS3Zipfile, downloadedSourceFilesBasePathWithCurrentDate)
 										if len(extractedFileList) > 0:
-											logger.info("Travesing through the unzip file and find the.gz files.. if exists then extract that as well")
+											logger.info("Travesing through the unzip file and find the.gz files.. if exists then extracting that as well")
 											getGzFiles = [gzFile for gzFile in extractedFileList if ".gz" in  gzFile]
 											for eachGZfile in getGzFiles:
 												logger.info("Found and sent for extraction :: {0}".format(eachGZfile))
