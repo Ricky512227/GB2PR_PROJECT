@@ -15,7 +15,7 @@ def readTheFileBasedonSeperator(tempFileName):
 		logger.error("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
 		sys.exit()
 
-#Rerurn MAP OF FILENAME AND THE RECORD COUNT FO MetaData
+#To fetch the map of metadatafilename and its record count i.e {metadatafilename : record_count} 
 def getMetadataFileRecordCount(tempMetadataContent):
 	try:
 		logger.info("Received Non-MetaData FileName to get the RecordCound :: {0}".format(tempMetadataContent))
@@ -36,7 +36,7 @@ def getMetadataFileRecordCount(tempMetadataContent):
 		logger.error("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
 		sys.exit()
 
-
+#To fetch the total number of records in each non metadatafile.
 def getNonMetadataFileRecordCount(nonMetadataFileName):
 	try:
 		logger.info("Received Non-MetaData FileName to get the RecordCound :: {0}".format(nonMetadataFileName))
@@ -48,7 +48,7 @@ def getNonMetadataFileRecordCount(nonMetadataFileName):
 		logger.error("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
 		sys.exit()
 
-
+#To compare the record counts between metadatafile and non metadatafile
 def compareRecordCounts(metadataContentMap,nonMetadataContentMap):
 	try:
 		logger.info ("For Comparision Received MetaDataConentMap :: {0}".format(metadataContentMap))
@@ -74,6 +74,7 @@ def compareRecordCounts(metadataContentMap,nonMetadataContentMap):
 		logger.error("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
 		sys.exit()
 
+
 def comparisionDecider(tmpFeedTypeBasePath,metaDataFileName):
 	try:
 		logger.info("Received FeedTypeBasePath :: {0}".format(tmpFeedTypeBasePath))
@@ -98,11 +99,8 @@ def feedRunner(currentFeedValidationDirName, currentFeedValidationDirNameWithDat
 	try:
 		
 		logger.info("currentFeedValidationDirNameWithDateTime :: {0}".format(currentFeedValidationDirNameWithDateTime))
-		# if not os.path.exists(currentFeedValidationDirNameWithDateTime):
-		# 	os.makedirs(current_year_month_day)
 		currentFeedValidationDirName = os.path.join(currentFeedValidationDirNameWithDateTime, currentFeedValidationDirName)
 		logger.info ("currentFeedValidationDirName :: {0}".format(currentFeedValidationDirName))
-
 		metadataBasePath = os.path.join(currentFeedValidationDirName,"metadata_*")
 		logger.info("metadataBasePath :: {0}".format(metadataBasePath))
 		metaDataFileName = glob.glob(metadataBasePath)
@@ -114,7 +112,6 @@ def feedRunner(currentFeedValidationDirName, currentFeedValidationDirNameWithDat
 		else:
 			print("MetaData File doesnt Exists [Path] :: {0}".format(currentFeedValidationDirName))
 			logger.error("MetaData File doesnt Exists [Path] :: {0}".format(currentFeedValidationDirName))
-	
 	except Exception as ex:
 		print("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
 		logger.error("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))

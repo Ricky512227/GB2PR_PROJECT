@@ -55,19 +55,19 @@ if __name__ == '__main__':
 				controlType = "Control"
 				sourceType = "Source"
 
-				controlMessageObjPath = constructS3PathForMessage(controlType, monitoringBucketName,monitoringBucketRegionName,objPath1,objPath2,objPath3,targetDate,controllerId)
-				listOfSoruceMessageObjPaths = [constructS3PathForMessage(sourceType,monitoringBucketName,monitoringBucketRegionName,objPath1,objPath2,objPath3,targetDate,sourceDataSetId) for sourceDataSetId in [refreshAsmtDataSetId,refreshDeedDataSetId,updateAsmtDataSetId,updateDeedDataSetId]]
+				controlMessageObjPath = constructS3PathForNotificationMsg(controlType, monitoringBucketName,monitoringBucketRegionName,objPath1,objPath2,objPath3,targetDate,controllerId)
+				listOfSoruceMessageObjPaths = [constructS3PathForNotificationMsg(sourceType,monitoringBucketName,monitoringBucketRegionName,objPath1,objPath2,objPath3,targetDate,sourceDataSetId) for sourceDataSetId in [refreshAsmtDataSetId,refreshDeedDataSetId,updateAsmtDataSetId,updateDeedDataSetId]]
 				print ("Initiated search to fetch the Notification Messages ....")
 				isAllMessageReceived = False
 				while True:
 					#Search the control file obj and its file based on the targertdate which was passed in sys args
 					messageFileName = datetime.datetime.strptime(targetDate, '%Y-%m-%d').strftime('%Y%m%d')+"*.json"
-					if not searchControlMessageFile(controlType,controlMessageObjPath,messageFileName):
+					if not searchControlNotificationMsgFile(controlType,controlMessageObjPath,messageFileName):
 						print("Sleeping for {0}secs".format(monitoringInterval))
 						time.sleep(monitoringInterval)
 					else:
 						#Search the source objs and its files based on the targertdate which was passed in sys args
-						if searchSourceMessageFile(sourceType, monitoringInterval,listOfSoruceMessageObjPaths,messageFileName):
+						if searchSourceNotificationMsgFile(sourceType, monitoringInterval,listOfSoruceMessageObjPaths,messageFileName):
 							isAllMessageReceived = True
 							print ("All Messages are Arrived .... Stopping the Monitor...")
 							break
@@ -135,7 +135,7 @@ if __name__ == '__main__':
 							targetLocation = downloadedControlFileBasePathWithCurrentDate
 						else:
 							targetLocation = downloadedSourceFilesBasePathWithCurrentDate
-
+						#Copy file from s3 to local target path
 						cmdToGetS3FileCopyToLocal = "hdfs dfs -copyToLocal"+" "+s3Url+" "+targetLocation
 						returnCode, cmdData = executeCmd(cmdToGetS3FileCopyToLocal)
 						if returnCode ==0:
@@ -171,7 +171,6 @@ if __name__ == '__main__':
 									logger.info('Received vaidation reason for controlFileName :: {0} {1}'.format(controlFileName, reason))
 									if reason ==  "FileSizeMatches":
 										logger.info("Checking  - ControlFileData [FileName-Size] [{0} - {1}] ==> BOTH_FILEZSIZES_ARE_MATCHING with  SourceFile [FileName-Size] [{0} - {1}] ] ".format(controlFileName, controlFileSize, controlFileName, controlFileSize))
-										
 										#STORE ALL the files Names :: Which was passed during the file size Validations, the collected file will send to be extract and get the record Count
 										ByteValidationPassedFiles.append(absPathofSourceFile)
 									
