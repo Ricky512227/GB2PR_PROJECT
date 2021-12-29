@@ -6,6 +6,22 @@ import shutil,os
 import json
 import subprocess as sp
 import subprocess
+from datetime import datetime
+
+def isvalidDate(test_str, format):
+	try:
+		logger.info("RECEIVED date from the systemArguments :: {0}".format(test_str))
+		res = True
+		try:
+			res = bool(datetime.strptime(test_str, format))
+			logger.info("Valid Date Format received [YYYY-MM-DD]:: {0}".format(test_str))
+		except ValueError:
+			res = False
+			logger.error("InValid Date Format received [YYYY-MM-DD] :: {0}".format(test_str))
+		return res
+	except Exception as ex:
+		print("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
+		logger.error("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
 
 def executeCmd(cmdtoexecute):
 	try:
