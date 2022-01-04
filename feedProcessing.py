@@ -116,7 +116,7 @@ if __name__ == '__main__':
 						returnCode, cmdData = executeCmd(cmdToGetS3FileCopyToLocal)
 						if returnCode ==0:
 							#Using the downloaded message.json fetching the s3 url. 
-							tempMessageData = readJsonFile(os.path.join(targetFielPath))
+							tempMessageData = readJsonFile(targetFielPath)
 							s3Url = getS3UrlsFromJsonData(tempMessageData)
 							if  s3Url is not None:
 								logger.info("Checking URLS ==> {0} :: URLS_FOUND".format(notificationMessageS3FileName))
