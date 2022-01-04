@@ -72,7 +72,7 @@ if __name__ == '__main__':
 							print ("All Messages are Arrived .... Stopping the Monitor...")
 							break
 
-				currentTimeStamp = datetime.datetime.today().strftime('%Y-%m-%d')
+				currentTimeStamp = datetime.datetime.today().strftime('%Y-%m-%d-%H-%M-%S')
 				#Setting the path  for target location for notification message files [FilesFromS3/NotificationMessages/{CurrentTimStamp}].
 				downloadedNotificationMessageFilesBasePath = os.path.join(ROOT_DIR,"FilesFromS3","NotificationMessages")
 				logger.info("downloadedNotificationMessageFilesBasePath :: {0}".format(downloadedNotificationMessageFilesBasePath))
@@ -104,12 +104,13 @@ if __name__ == '__main__':
 				if isAllMessageReceived :
 					failedUrlsDataSetCount = 0
 					listofS3Urls = []
-					for notificationMessageS3Obj in listOfSoruceMessageObjPaths.extend([controlMessageObjPath]):
-						messageFileName = datetime.datetime.strptime(targetDate, '%Y-%m-%d').strftime('%Y%m%d')+"*.json"
-						notificationMessageS3FileName = messageFileName
+					for notificationMessageS3Obj in listOfSoruceMessageObjPaths+controlMessageObjPath.split(","):
+						notificationMessageS3FileName = datetime.datetime.strptime(targetDate, '%Y-%m-%d').strftime('%Y%m%d')+"*.json"
 						notificationMessageS3FilePath = os.path.join(notificationMessageS3Obj,notificationMessageS3FileName)
-						targetFielPath = downloadedNotificationMessageFilesBasePathWithCurrentDate+"/"
-						print("targetFielPath :: {0}".format(targetFielPath))
+						print ("Received notificationMessageS3Obj :: {0} :: {1}".format(notificationMessageS3Obj, type(notificationMessageS3Obj)))
+						targetFileName = "NotificationMessage_"+notificationMessageS3Obj.split("/")[6]+".json"
+						targetFielPath = os.path.join(downloadedNotificationMessageFilesBasePathWithCurrentDate,targetFileName)
+						print("Received targetFielPath :: {0}".format(targetFielPath))
 						#Cmd to download the file to local from s3
 						cmdToGetS3FileCopyToLocal = "hdfs dfs -copyToLocal"+" "+notificationMessageS3FilePath+" "+ targetFielPath
 						returnCode, cmdData = executeCmd(cmdToGetS3FileCopyToLocal)
