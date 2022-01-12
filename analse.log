@@ -1,0 +1,833 @@
+EEEEEEEEEEEEEEEEE MMMMMMMM           MMMMMMMM RRRRRRRRRRRRRRR
+E::::::::::::::::::E M:::::::M         M:::::::M R::::::::::::::R
+EE:::::EEEEEEEEE:::E M::::::::M       M::::::::M R:::::RRRRRR:::::R
+  E::::E       EEEEE M:::::::::M     M:::::::::M RR::::R      R::::R
+  E::::E             M::::::M:::M   M:::M::::::M   R:::R      R::::R
+  E:::::EEEEEEEEEE   M:::::M M:::M M:::M M:::::M   R:::RRRRRR:::::R
+  E::::::::::::::E   M:::::M  M:::M:::M  M:::::M   R:::::::::::RR
+  E:::::EEEEEEEEEE   M:::::M   M:::::M   M:::::M   R:::RRRRRR::::R
+  E::::E             M:::::M    M:::M    M:::::M   R:::R      R::::R
+  E::::E       EEEEE M:::::M     MMM     M:::::M   R:::R      R::::R
+EE:::::EEEEEEEE::::E M:::::M             M:::::M   R:::R      R::::R
+E::::::::::::::::::E M:::::M             M:::::M RR::::R      R::::R
+EEEEEEEEEEEEEEEEEEEE MMMMMMM             MMMMMMM RRRRRRR      RRRRRR
+
+[root@ip-10-122-72-38 ~]# cd /root
+[root@ip-10-122-72-38 ~]# ls -lrt
+total 16
+-rw-r--r-- 1 root root 15987 Jan 12 15:47 feedProcessing.py
+[root@ip-10-122-72-38 ~]# rm feedProcessing.py
+rm: remove regular file ‘feedProcessing.py’? ^C
+[root@ip-10-122-72-38 ~]# ^C
+[root@ip-10-122-72-38 ~]# ^C
+[root@ip-10-122-72-38 ~]# ^C
+[root@ip-10-122-72-38 ~]# >feedProcessing.py
+[root@ip-10-122-72-38 ~]# ls -lrt
+total 0
+-rw-r--r-- 1 root root 0 Jan 12 17:39 feedProcessing.py
+[root@ip-10-122-72-38 ~]# vi feedProcessing.py
+[root@ip-10-122-72-38 ~]# spark-submit --deploy-mode client --name etl-BKFS-FILE-VALIDATION-17-2022-01-06T16:12:40 --py-files s3://gfqpr1-devl-edl2-us-east-1/deploy/app/gfq_cf_etl/scripts/bkfs_file_validation/CommonUtlity.py,s3://gfqpr1-devl-edl2-us-east-1/deploy/app/gfq_cf_etl/scripts/bkfs_file_validation/compareFileNameSize.py,s3://gfqpr1-devl-edl2-us-east-1/deploy/app/gfq_cf_etl/scripts/bkfs_file_validation/logMonitor.py,s3://gfqpr1-devl-edl2-us-east-1/deploy/app/gfq_cf_etl/scripts/bkfs_file_validation/recordCount.py,s3://gfqpr1-devl-edl2-us-east-1/deploy/app/gfq_cf_etl/scripts/bkfs_file_validation/WatchDog.py,s3://gfqpr1-devl-edl2-us-east-1/deploy/app/gfq_cf_etl/lib/loop_config.py,s3://gfqpr1-devl-edl2-us-east-1/deploy/app/gfq_cf_etl/lib/aws_util.py feedProcessing.py gfqpr1-devl-edl2-us-east-1 etl BKFS fnma-gb2pr-devl-edl-us-east-1-edl land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011600/2021-11-03/BKI_Control20211102.txt,land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011668/2021-11-03/Managed_Refresh_ASMT20211102.zip.001,land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011669/2021-11-03/Managed_Refresh_Deed20211102.zip.001,land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011670/2021-11-03/Managed_Update_ASMT20211102.zip.001,land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011671/2021-11-03/Managed_Update_Deed20211102.zip.001,land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011700/2021-11-03/BlackKnightPublicDataReport20211102.txt
+Log File Path ::/mnt/tmp/localPyFiles-1e7feb0a-adf4-4602-b631-eba704d12951/logs/20220112_17.log
+INFO:root:Initializing Read configurations ...
+INFO:aws_util:Retrieving JSON file from bucket gfqpr1-devl-edl2-us-east-1 : key deploy/app/gfq_cf_etl/config/etl/main.json
+INFO:aws_util:Retrieving JSON file from bucket gfqpr1-devl-edl2-us-east-1 : key deploy/app/gfq_cf_etl/config/etl/sources/BKFS.json
+MISSING -> GB2DSET
+MISSING -> SOURCE
+MISSING -> TodaysDate
+MISSING -> appShortName
+MISSING -> environ
+INFO:root:Valiation Check for configurations ==> [ONGOING]
+INFO:root:Valiation Check for configurations ==> [SUCCESS]
+INFO:root:Collected S3 URLS :: ['s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011600/2021-11-03/BKI_Control20211102.txt', 's3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011668/2021-11-03/Managed_Refresh_ASMT20211102.zip.001', 's3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011669/2021-11-03/Managed_Refresh_Deed20211102.zip.001', 's3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011670/2021-11-03/Managed_Update_ASMT20211102.zip.001', 's3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011671/2021-11-03/Managed_Update_Deed20211102.zip.001', 's3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011700/2021-11-03/BlackKnightPublicDataReport20211102.txt']
+INFO:root:downloadedZip_SourceFileBasePath :: /mnt/var/FilesFromS3/SourceFiles
+INFO:root:downloadedSourceFilesBasePathWithCurrentDate :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:Directory not exists, Creating New Directory :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:downloadedControlFileBasePath :: /mnt/var/FilesFromS3/ControllerFiles
+INFO:root:downloadedControlFileBasePathWithCurrentDate :: /mnt/var/FilesFromS3/ControllerFiles/202201121740
+INFO:root:Directory not exists, Creating New Directory :: /mnt/var/FilesFromS3/ControllerFiles/202201121740
+INFO:root:downloadedReportFileBasePath :: /mnt/var/FilesFromS3/DataReportFiles
+INFO:root:downloadedReportFileBasePathWithCurrentDate :: /mnt/var/FilesFromS3/DataReportFiles/202201121740
+INFO:root:Directory not exists, Creating New Directory :: /mnt/var/FilesFromS3/DataReportFiles/202201121740
+INFO:root:s3FilePath :: s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011600/2021-11-03
+INFO:root:s3fileName :: BKI_Control20211102.txt
+INFO:root:Command to execute ==>hdfs dfs -copyToLocal s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011600/2021-11-03/BKI_Control20211102.txt /mnt/var/FilesFromS3/ControllerFiles/202201121740/
+INFO:root:File s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011600/2021-11-03/BKI_Control20211102.txt Download/Copy to Local :: /mnt/var/FilesFromS3/ControllerFiles/202201121740/
+INFO:root:s3FilePath :: s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011668/2021-11-03
+INFO:root:s3fileName :: Managed_Refresh_ASMT20211102.zip.001
+INFO:root:Command to execute ==>hdfs dfs -copyToLocal s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011668/2021-11-03/Managed_Refresh_ASMT20211102.zip.001 /mnt/var/FilesFromS3/SourceFiles/202201121740/
+INFO:root:File s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011668/2021-11-03/Managed_Refresh_ASMT20211102.zip.001 Download/Copy to Local :: /mnt/var/FilesFromS3/SourceFiles/202201121740/
+INFO:root:s3FilePath :: s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011669/2021-11-03
+INFO:root:s3fileName :: Managed_Refresh_Deed20211102.zip.001
+INFO:root:Command to execute ==>hdfs dfs -copyToLocal s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011669/2021-11-03/Managed_Refresh_Deed20211102.zip.001 /mnt/var/FilesFromS3/SourceFiles/202201121740/
+INFO:root:File s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011669/2021-11-03/Managed_Refresh_Deed20211102.zip.001 Download/Copy to Local :: /mnt/var/FilesFromS3/SourceFiles/202201121740/
+INFO:root:s3FilePath :: s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011670/2021-11-03
+INFO:root:s3fileName :: Managed_Update_ASMT20211102.zip.001
+INFO:root:Command to execute ==>hdfs dfs -copyToLocal s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011670/2021-11-03/Managed_Update_ASMT20211102.zip.001 /mnt/var/FilesFromS3/SourceFiles/202201121740/
+INFO:root:File s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011670/2021-11-03/Managed_Update_ASMT20211102.zip.001 Download/Copy to Local :: /mnt/var/FilesFromS3/SourceFiles/202201121740/
+INFO:root:s3FilePath :: s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011671/2021-11-03
+INFO:root:s3fileName :: Managed_Update_Deed20211102.zip.001
+INFO:root:Command to execute ==>hdfs dfs -copyToLocal s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011671/2021-11-03/Managed_Update_Deed20211102.zip.001 /mnt/var/FilesFromS3/SourceFiles/202201121740/
+INFO:root:File s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011671/2021-11-03/Managed_Update_Deed20211102.zip.001 Download/Copy to Local :: /mnt/var/FilesFromS3/SourceFiles/202201121740/
+INFO:root:s3FilePath :: s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011700/2021-11-03
+INFO:root:s3fileName :: BlackKnightPublicDataReport20211102.txt
+INFO:root:Command to execute ==>hdfs dfs -copyToLocal s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011700/2021-11-03/BlackKnightPublicDataReport20211102.txt /mnt/var/FilesFromS3/DataReportFiles/202201121740/
+INFO:root:File s3://fnma-gb2pr-devl-edl-us-east-1-edl/land/crs/bkfs/b1e98f8b-13a7-476c-b851-2f3b7ed368b7/DSET00011700/2021-11-03/BlackKnightPublicDataReport20211102.txt Download/Copy to Local :: /mnt/var/FilesFromS3/DataReportFiles/202201121740/
+INFO:root:controlFilePath :: /mnt/var/FilesFromS3/ControllerFiles/202201121740/BKI_Control20211102.txt
+INFO:root:Control File Content Collected  :: {'Managed_Refresh_ASMT20211102.zip.001': 2369167417, 'Managed_Refresh_Deed20211102.zip.001': 3259771034, 'Managed_Update_ASMT20211102.zip.001': 766, 'Managed_Update_Deed20211102.zip.001': 730}
+INFO:root:SOURCE_FILE = /mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Refresh_ASMT20211102.zip.001
+INFO:root:SOURCE_FILE = /mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Refresh_Deed20211102.zip.001
+INFO:root:SOURCE_FILE = /mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Update_ASMT20211102.zip.001
+INFO:root:SOURCE_FILE = /mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Update_Deed20211102.zip.001
+INFO:root:Source ZIP Files (Deed and ASMT Files Collected )  :: dict_keys(['/mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Refresh_ASMT20211102.zip.001', '/mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Refresh_Deed20211102.zip.001', '/mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Update_ASMT20211102.zip.001', '/mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Update_Deed20211102.zip.001']) , 4
+RECEIVED//Searching   tempControlFileContent :: Managed_Refresh_ASMT20211102.zip.001
+INFO:root:ControlFileContent Managed_Refresh_ASMT20211102.zip.001 is PRESENT in the source Path :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:Calling for the Byte Validation.
+INFO:root:Received Byte_Validation reason for controlFileName :: Managed_Refresh_ASMT20211102.zip.001 FileSizeMatches
+INFO:root:CHECKING  - ControlFileData [FileName-Size] [Managed_Refresh_ASMT20211102.zip.001 - 2369167417] ==> BOTH_FILEZSIZES_ARE_MATCHING with  SourceFile [FileName-Size] [Managed_Refresh_ASMT20211102.zip.001 - 2369167417] ]
+RECEIVED//Searching   tempControlFileContent :: Managed_Refresh_Deed20211102.zip.001
+INFO:root:ControlFileContent Managed_Refresh_Deed20211102.zip.001 is PRESENT in the source Path :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:Calling for the Byte Validation.
+INFO:root:Received Byte_Validation reason for controlFileName :: Managed_Refresh_Deed20211102.zip.001 FileSizeMatches
+INFO:root:CHECKING  - ControlFileData [FileName-Size] [Managed_Refresh_Deed20211102.zip.001 - 3259771034] ==> BOTH_FILEZSIZES_ARE_MATCHING with  SourceFile [FileName-Size] [Managed_Refresh_Deed20211102.zip.001 - 3259771034] ]
+RECEIVED//Searching   tempControlFileContent :: Managed_Update_ASMT20211102.zip.001
+INFO:root:ControlFileContent Managed_Update_ASMT20211102.zip.001 is PRESENT in the source Path :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:Calling for the Byte Validation.
+INFO:root:Received Byte_Validation reason for controlFileName :: Managed_Update_ASMT20211102.zip.001 FileSizeMatches
+INFO:root:CHECKING  - ControlFileData [FileName-Size] [Managed_Update_ASMT20211102.zip.001 - 766] ==> BOTH_FILEZSIZES_ARE_MATCHING with  SourceFile [FileName-Size] [Managed_Update_ASMT20211102.zip.001 - 766] ]
+RECEIVED//Searching   tempControlFileContent :: Managed_Update_Deed20211102.zip.001
+INFO:root:ControlFileContent Managed_Update_Deed20211102.zip.001 is PRESENT in the source Path :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:Calling for the Byte Validation.
+INFO:root:Received Byte_Validation reason for controlFileName :: Managed_Update_Deed20211102.zip.001 FileSizeMatches
+INFO:root:CHECKING  - ControlFileData [FileName-Size] [Managed_Update_Deed20211102.zip.001 - 730] ==> BOTH_FILEZSIZES_ARE_MATCHING with  SourceFile [FileName-Size] [Managed_Update_Deed20211102.zip.001 - 730] ]
+INFO:root:s3- Valid ZipFiles :: ['/mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Refresh_ASMT20211102.zip.001', '/mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Refresh_Deed20211102.zip.001', '/mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Update_ASMT20211102.zip.001', '/mnt/var/FilesFromS3/SourceFiles/202201121740/Managed_Update_Deed20211102.zip.001']
+File size is compatible :: Extracting all files...[STARTED]
+Extracting all files...[COMPLETED]
+INFO:root:Travesing through the unzip file and find the.gz files.. if exists then extracting that as well
+INFO:root:Found and sent for extraction :: ASMT20211102/04013_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/04013_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/04013_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/05007_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/05007_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/05007_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/06037_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/06037_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/06037_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/08077_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/08077_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/08077_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/12099_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/12099_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/12099_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/13121_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/13121_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/13121_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/16001_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/16001_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/16001_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/17031_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/17031_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/17031_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/20173_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/20173_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/20173_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/22071_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/22071_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/22071_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/29189_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/29189_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/29189_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/32003_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/32003_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/32003_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/34023_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/34023_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/34023_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/35055_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/35055_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/35055_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/36047_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/36047_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/36047_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/39049_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/39049_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/39049_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/40019_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/40019_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/40019_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/48201_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/48201_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/48201_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/49035_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/49035_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/49035_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: ASMT20211102/53033_Assessment_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/53033_Assessment_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: ASMT20211102/53033_Assessment_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/ASMT20211102/ASMT20211102/ASMT20211102/
+#########################################################
+File size is compatible :: Extracting all files...[STARTED]
+Extracting all files...[COMPLETED]
+INFO:root:Travesing through the unzip file and find the.gz files.. if exists then extracting that as well
+INFO:root:Found and sent for extraction :: Deed20211102/04013_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/04013_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/04013_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/04013_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/04013_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/04013_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/05007_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/05007_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/05007_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/05007_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/05007_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/05007_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/06037_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/06037_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/06037_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/06037_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/06037_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/06037_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/08077_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/08077_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/08077_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/08077_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/08077_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/08077_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/12099_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/12099_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/12099_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/12099_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/12099_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/12099_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/13121_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/13121_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/13121_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/13121_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/13121_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/13121_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/16001_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/16001_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/16001_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/16001_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/16001_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/16001_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/17031_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/17031_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/17031_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/17031_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/17031_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/17031_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/20173_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/20173_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/20173_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/20173_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/20173_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/20173_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/22071_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/22071_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/22071_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/22071_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/22071_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/22071_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/29189_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/29189_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/29189_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/29189_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/29189_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/29189_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/32003_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/32003_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/32003_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/32003_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/32003_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/32003_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/34023_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/34023_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/34023_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/34023_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/34023_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/34023_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/35055_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/35055_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/35055_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/35055_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/35055_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/35055_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/36047_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/36047_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/36047_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/36047_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/36047_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/36047_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/39049_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/39049_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/39049_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/39049_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/39049_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/39049_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/40019_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/40019_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/40019_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/40019_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/40019_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/40019_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/48201_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/48201_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/48201_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/48201_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/48201_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/48201_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/49035_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/49035_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/49035_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/49035_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/49035_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/49035_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/53033_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/53033_Deed_Orphan_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/53033_Deed_Orphan_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:Found and sent for extraction :: Deed20211102/53033_Deed_Refresh_20211102.txt.gz
+INFO:root:RECEIVED .GZ File Name :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/53033_Deed_Refresh_20211102.txt.gz
+INFO:root:PROCESSED  .GZ File Name :: SUCCESS
+INFO:root:SUCCESS Extracted the .gz file:: Deed20211102/53033_Deed_Refresh_20211102.txt.gz
+currentFeedValidationDirName :: Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+INFO:root:currentFeedValidationDirNameWithDateTime :: /mnt/var/FilesFromS3/SourceFiles/202201121740
+INFO:root:currentFeedValidationDirName :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+INFO:root:metadataBasePath :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/metadata_*
+MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+ERROR:root:MetaData File doesnt Exists [Path] :: /mnt/var/FilesFromS3/SourceFiles/202201121740/Deed20211102/Deed20211102/Deed20211102/
+#########################################################
+File size is compatible :: Extracting all files...[STARTED]
+Extracting all files...[COMPLETED]
+INFO:root:Travesing through the unzip file and find the.gz files.. if exists then extracting that as well
+File size is compatible :: Extracting all files...[STARTED]
+Extracting all files...[COMPLETED]
