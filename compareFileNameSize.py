@@ -34,7 +34,3 @@ def compareSourceandControlFile(tempControlFileContent,temp_controlFileContentSi
 		print("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
 		logger.error("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
 		sys.exit()
-
-
-
-
