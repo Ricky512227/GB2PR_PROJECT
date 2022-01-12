@@ -95,13 +95,10 @@ def comparisionDecider(tmpFeedTypeBasePath,metaDataFileName):
 		logger.error("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
 		sys.exit()
 
-def feedRunner(currentFeedValidationDirName, currentFeedValidationDirNameWithDateTime):
+def feedRunner(currentFeedValidationDirName):
 	try:
-		
-		logger.info("currentFeedValidationDirNameWithDateTime :: {0}".format(currentFeedValidationDirNameWithDateTime))
-		currentFeedValidationDirName = os.path.join(currentFeedValidationDirNameWithDateTime, currentFeedValidationDirName)
 		logger.info ("currentFeedValidationDirName :: {0}".format(currentFeedValidationDirName))
-		metadataBasePath = os.path.join(currentFeedValidationDirName,"metadata_*")
+		metadataBasePath = currentFeedValidationDirName+"metadata_*"
 		logger.info("metadataBasePath :: {0}".format(metadataBasePath))
 		metaDataFileName = glob.glob(metadataBasePath)
 		if len(metaDataFileName) !=0:
