@@ -8,6 +8,12 @@ from CommonUtlity import extractZipFile, untarGZfile,readJsonFile,getS3UrlsFromJ
 from recordCount import feedRunner
 from WatchDog import *
 import argparse
+import re
+
+def getExtractedDirName(tmpPath):
+	dirName = "(Managed_[^>]*?_[^>]*?)[\d]+\.zip"
+	exDirName = re.findall(dirName,str(tmpPath))[0]
+	return exDirName
 
 def parse_args():
     """Method to define and ingest command line arguments.
@@ -151,8 +157,8 @@ if __name__ == '__main__':
                     #Collect the downloaded ZIP file Names[Source(ASMT/DEED)]
                     SourcefileDict = {}
                     for zfile in  glob.glob(downloadedSourceFilesBasePathWithCurrentDate+"/*"):
-                        logger.info('SOURCE_FILE = {}'.format(zfile))
-                        if ".zip.001" in zfile:
+                        logger.info('SOURCE_FILE : {0}'.format(zfile))
+                        if ".zip" in zfile:
                             SourcefileDict[zfile] =  int(os.stat(zfile).st_size)
                     logger.info("Source ZIP Files (Deed and ASMT Files Collected )  :: {0} , {1}".format(SourcefileDict.keys(), len(SourcefileDict.keys())))
                     if len(SourcefileDict.keys())!=0:
@@ -175,7 +181,10 @@ if __name__ == '__main__':
                         if len(ByteValidationPassedFiles) >0:
                             logger.info("s3- Valid ZipFiles :: {0}".format(ByteValidationPassedFiles))
                             for eachS3Zipfile in ByteValidationPassedFiles:
+                                logger.info("getExtractedDirName :: {0} ::".format(getExtractedDirName(eachS3Zipfile)))
+                                downloadedSourceFilesBasePathWithCurrentDate = downloadedSourceFilesBasePathWithCurrentDate+getExtractedDirName(eachS3Zipfile)
                                 extractedFileList=  extractZipFile(eachS3Zipfile, downloadedSourceFilesBasePathWithCurrentDate)
+                                logger.info("extractedFileList :: {0}".format(extractedFileList))
                                 if len(extractedFileList) > 0:
                                     logger.info("Travesing through the unzip file and find the.gz files.. if exists then extracting that as well")
                                     getGzFiles = [gzFile for gzFile in extractedFileList if ".gz" in  gzFile]
@@ -186,16 +195,19 @@ if __name__ == '__main__':
 
                                             #AfterUnzip the Directory and its sub .gz Successfully then moving towards for those current extraction folder recordCount Vlaidations
                                             extractedDirNameSplit = extractedFileList[0].split("_")
+                                            logger.info("extractedDirNameSplit :: {0}".format(extractedDirNameSplit))
                                             feedName = "_".join(extractedDirNameSplit[0:2])
+                                            logger.info("feedName :: {0}".format(feedName))
                                             feedType = extractedDirNameSplit[-1]
+                                            logger.info("feedType :: {0}".format(feedType))
                                             currentFeedValidationDirName = os.path.join(extractedFileList[0],feedName,feedType)
-                                            print("currentFeedValidationDirName :: {0}".format(currentFeedValidationDirName))
+                                            logger.info("currentFeedValidationDirName :: {0}".format(currentFeedValidationDirName))
                                             print("#########################################################")
                                             feedRunner(currentFeedValidationDirName,downloadedSourceFilesBasePathWithCurrentDate)
                                             print("#########################################################")
                                         else:
                                             print("Failed Extracted the .gz file:: {0}".format(eachGZfile))
-                                            logger.info("Failed Extracted the .gz file:: {0}".format(eachGZfile))
+                                            logger.error("Failed Extracted the .gz file:: {0}".format(eachGZfile))
 
                     else:
                         print ('No ZIP files found inside the Source Directory :: {0}'.format(downloadedSourceFilesBasePathWithCurrentDate))
