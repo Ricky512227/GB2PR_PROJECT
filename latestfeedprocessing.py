@@ -181,7 +181,7 @@ if __name__ == '__main__':
                         if len(ByteValidationPassedFiles) >0:
                             logger.info("s3- Valid ZipFiles :: {0}".format(ByteValidationPassedFiles))
                             for eachS3Zipfile in ByteValidationPassedFiles:
-                                logger.info("getExtractedDirName :: {0} ::".format(getExtractedDirName(eachS3Zipfile)))
+                                logger.info("getExtractedDirName :: {0} ".format(getExtractedDirName(eachS3Zipfile)))
                                 downloadedSourceFilesBasePathWithCurrentDate = downloadedSourceFilesBasePathWithCurrentDate+getExtractedDirName(eachS3Zipfile)
                                 extractedFileList=  extractZipFile(eachS3Zipfile, downloadedSourceFilesBasePathWithCurrentDate)
                                 logger.info("extractedFileList :: {0}".format(extractedFileList))
@@ -190,20 +190,21 @@ if __name__ == '__main__':
                                     getGzFiles = [gzFile for gzFile in extractedFileList if ".gz" in  gzFile]
                                     for eachGZfile in getGzFiles:
                                         logger.info("Found and sent for extraction :: {0}".format(eachGZfile))
-                                        if untarGZfile(os.path.join(downloadedSourceFilesBasePathWithCurrentDate,eachGZfile)):
+                                        if untarGZfile(downloadedSourceFilesBasePathWithCurrentDate+"/"+eachGZfile):
                                             logger.info("SUCCESS Extracted the .gz file:: {0}".format(eachGZfile))
 
                                             #AfterUnzip the Directory and its sub .gz Successfully then moving towards for those current extraction folder recordCount Vlaidations
                                             extractedDirNameSplit = extractedFileList[0].split("_")
                                             logger.info("extractedDirNameSplit :: {0}".format(extractedDirNameSplit))
-                                            feedName = "_".join(extractedDirNameSplit[0:2])
-                                            logger.info("feedName :: {0}".format(feedName))
-                                            feedType = extractedDirNameSplit[-1]
-                                            logger.info("feedType :: {0}".format(feedType))
-                                            currentFeedValidationDirName = os.path.join(extractedFileList[0],feedName,feedType)
+                                            # feedName = "_".join(extractedDirNameSplit[0:2])
+                                            # logger.info("feedName :: {0}".format(feedName))
+                                            # feedType = extractedDirNameSplit[-1]
+                                            # logger.info("feedType :: {0}".format(feedType))
+                                            # currentFeedValidationDirName = os.path.join(extractedFileList[0],feedName,feedType)
+                                            currentFeedValidationDirName = downloadedSourceFilesBasePathWithCurrentDate +"/"+extractedFileList[0]
                                             logger.info("currentFeedValidationDirName :: {0}".format(currentFeedValidationDirName))
                                             print("#########################################################")
-                                            feedRunner(currentFeedValidationDirName,downloadedSourceFilesBasePathWithCurrentDate)
+                                            feedRunner(currentFeedValidationDirName)
                                             print("#########################################################")
                                         else:
                                             print("Failed Extracted the .gz file:: {0}".format(eachGZfile))
