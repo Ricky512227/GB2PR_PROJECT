@@ -13,8 +13,8 @@ def getSourceType(tmp_source_path):
 		Returns :: a string of source type 
 	"""
 	try:
-		source_type = "(Managed_[^>]*?_[^>]*?)[\d]+\.zip"
-		source_type = re.findall(source_type,str(tmp_source_path))[0]
+		source_type = r"(Managed_[^>]*?_[^>]*?)[\d]+\.zip"
+		source_type = re.findall(source_type, str(tmp_source_path))[0]
 		return source_type
 	except Exception as ex:
 		print("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
@@ -72,7 +72,7 @@ def getSourceTypeandSourceFileMap(zip_filepath):
 		Returns :: a Dict/Map of SourceName and its list of files.
 	"""
 	try:
-		source_zipfiles = glob.glob(zip_filepath+"\*")
+		source_zipfiles = glob.glob(os.path.join(zip_filepath, "*"))
 		mapOf_source_id_file = {}
 		for source_zipfile in source_zipfiles:
 			souce_zipfile_key = getSourceType(source_zipfile)

@@ -11,9 +11,9 @@ import argparse
 import re
 
 def getExtractedDirName(tmpPath):
-	dirName = "(Managed_[^>]*?_[^>]*?)[\d]+\.zip"
-	exDirName = re.findall(dirName,str(tmpPath))[0]
-	return exDirName
+    dirName = r"(Managed_[^>]*?_[^>]*?)[\d]+\.zip"
+    exDirName = re.findall(dirName, str(tmpPath))[0]
+    return exDirName
 
 def parse_args():
     """Method to define and ingest command line arguments.
@@ -83,7 +83,7 @@ if __name__ == '__main__':
             listofS3Urls.append('s3://{}/{}'.format(received_S3BucketName, s3_prefix))
         logger.info("Collected S3 URLS :: {0}".format(listofS3Urls))
 
-        currentTimeStamp = datetime.datetime.today().strftime('%Y%m%d%H%M')
+        currentTimeStamp = datetime.today().strftime('%Y%m%d%H%M')
         #Setting the path  for target location for  source files [FilesFromS3/SourceFiles/{CurrentTimStamp}].
         downloadedZip_SourceFileBasePath = os.path.join(ROOT_DIR,"FilesFromS3","SourceFiles")
         logger.info("downloadedZip_SourceFileBasePath :: {0}".format(downloadedZip_SourceFileBasePath))
