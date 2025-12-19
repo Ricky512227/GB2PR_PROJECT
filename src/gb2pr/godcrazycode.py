@@ -1,4 +1,5 @@
 def processControlfileContents(controlfileContent,RESULT):
+    """Process request"""
     map = {}
     for did in RESULT.keys():
         for item in controlfileContent.keys():
