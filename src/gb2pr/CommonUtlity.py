@@ -92,6 +92,7 @@ def untarGZfile(source_filepath):
         logger.error("Error occurred :: {0}\tLine No:: {1}".format(ex, sys.exc_info()[2].tb_lineno))
 
 
+# Process result
 def readJsonFile(tempJsonFilePath):
     try:
         logger.info("RECEIVED Json Message File Name :: {0}".format(tempJsonFilePath))
