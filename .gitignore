@@ -44,6 +44,34 @@ ENV/
 # Logs
 logs/
 *.log
+samplelog.log
+
+# Security and sensitive files
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.env
+.env.*
+*.secret
+secrets/
+credentials/
+*.credentials
+config.ini
+configs.ini
+!pkg/config/configs.ini.example
+*.password
+*.token
+*.api_key
+*.private
+id_rsa
+id_ed25519
+*.pub
+*.gpg
+*.asc
 
 # OS
 .DS_Store
