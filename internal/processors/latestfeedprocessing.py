@@ -1,14 +1,24 @@
-import loop_config
-from logMonitor import logger
-import sys,os
+import sys
+import os
 from datetime import datetime
 import glob
-from compareFileNameSize import compareSourceandControlFile,convertControlDataToControlFileMap
-from CommonUtlity import extractZipFile, untarGZfile,readJsonFile,getS3UrlsFromJsonData,isvalidDate
-from recordCount import feedRunner
-from WatchDog import *
 import argparse
 import re
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
+
+from internal.monitors.logMonitor import logger
+from pkg.common.compareFileNameSize import compareSourceandControlFile, convertControlDataToControlFileMap
+from pkg.common.CommonUtlity import extractZipFile, untarGZfile, readJsonFile, getS3UrlsFromJsonData, isvalidDate
+from pkg.common.recordCount import feedRunner
+from internal.monitors.WatchDog import *
+
+# Try to import loop_config if it exists
+try:
+    import loop_config
+except ImportError:
+    loop_config = None
 
 def getExtractedDirName(tmpPath):
     dirName = r"(Managed_[^>]*?_[^>]*?)[\d]+\.zip"

@@ -1,8 +1,13 @@
-import os,sys
+import os
+import sys
 import glob
 import re
-from CommonUtlity import executeCmd
-from logMonitor import logger
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
+
+from pkg.common.CommonUtlity import executeCmd
+from internal.monitors.logMonitor import logger
 
 def getSourceType(tmp_source_path):
 	"""

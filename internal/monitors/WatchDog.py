@@ -1,9 +1,13 @@
 import os
-import time,sys
-from logMonitor import logger
+import time
+import sys
 from datetime import datetime
-from CommonUtlity import executeCmd
-import datetime
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
+
+from internal.monitors.logMonitor import logger
+from pkg.common.CommonUtlity import executeCmd
 
 #Fucntion to construct the Message Notification path 
 def constructS3PathForNotificationMsg(fileType, monitoringBucketName,MonitoringBucketRegionName,objPath1,objPath2,objPath3,targetDate,tempDataSetID):
