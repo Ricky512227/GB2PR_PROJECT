@@ -1,0 +1,14 @@
+module(
+    name = "gb2pr_project",
+    version = "1.0.0",
+)
+
+# Python rules
+bazel_dep(name = "rules_python", version = "0.26.0")
+
+# Python toolchain
+python = use_extension("@rules_python//python:extensions.bzl", "python")
+python.toolchain(
+    python_version = "3.9",
+)
+use_repo(python, "python3_9_toolchains")

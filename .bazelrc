@@ -1,0 +1,15 @@
+# Bazel configuration
+
+# Python
+build --python_version=PY3
+
+# Build options
+build --incompatible_use_python_toolchains=true
+build --enable_platform_specific_config
+
+# Test options
+test --test_output=errors
+test --test_summary=detailed
+
+# Remote caching (optional)
+# build --remote_cache=grpc://your-cache-server:8080
