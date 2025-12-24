@@ -79,5 +79,24 @@ Thumbs.db
 
 # Project specific
 samplelog.txt
+samplelog.log
 *.pyc
+
+# AWS and cloud credentials
+.aws/
+aws-credentials
+*.aws
+*.s3cfg
+
+# Database credentials
+*.db
+*.sqlite
+*.sqlite3
+connection_strings.txt
+
+# API keys and tokens
+api_keys.txt
+tokens.txt
+*.api_key
+*.access_token
 
